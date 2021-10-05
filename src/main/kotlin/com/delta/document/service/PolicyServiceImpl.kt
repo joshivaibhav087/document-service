@@ -215,10 +215,10 @@ try {
 
     }
 
-    override fun getAllDetails(): MutableList<PolicyHolder?> {
-       return policyHolderRepository.findAll()
-    }
 
+    override fun getAllDetails(): MutableList<PolicyHolder?> {
+        return policyHolderRepository.findAll()
+    }
     override fun getDerailsByPanCardNumber(_id: String?): Optional<PolicyHolder?> {
         return policyHolderRepository.findById(_id!!)
     }
