@@ -28,67 +28,33 @@ open class DocumentServiceApplicationTests() {
     @MockBean
     var policyHolderRepository: PolicyHolderRepository? = null
 
-    @Test
-    fun  submitDocumentTest() {
 
-        val date = Date()
-        var data = PolicyHolderDao()
-        data.partnerId = "6"
-        data.clientName = "aniruddha"
-        data.clientAddress = "mumbai"
-        data.pinCode = "400706"
-        data.emailId = "ani@gmail.com"
-        data.mobile = "7162986"
-        data.birthDate = date
-        data.aadharNumber = "12345"
-        //data.aadharURL = ani.pdf
-        data.panCardNumber = "09876"
-        //data.panCardURL ="0987654"
-
-
-        var d = PolicyHolder()
-        d.partnerId = "6"
-        d.clientName = "aniruddha"
-        d.clientAddress = "mumbai"
-        d.pinCode = "400706"
-        d.emailId = "ani@gmail.com"
-        d.mobile = "7162986"
-        d.birthDate = date
-        d.aadharNumber = "12345"
-        d.aadharURL = "ani.pdf"
-        d.panCardNumber = "09876"
-        d.panCardURL ="0987654"
-        Mockito.`when`(policyHolderRepository!!.save(d)).thenReturn(d)
-
-        Assertions.assertEquals("The key parameter must be specified when uploading an object",policyService!!.submitDocuments(data));
-
-    }
 
 
     @Test
     fun getAllDetailsTest(){
         val date = Date()
-        var d = PolicyHolder()
-        d.partnerId = "6"
-        d.clientName = "aniruddha"
-        d.clientAddress = "mumbai"
-        d.pinCode = "400706"
-        d.emailId = "ani@gmail.com"
-        d.mobile = "7162986"
-        d.birthDate = date
-        d.aadharNumber = "12345"
-        d.aadharURL = "ani.pdf"
-        d.panCardNumber = "09876"
-        d.panCardURL ="0987654"
+        var data = PolicyHolder()
+        data.partnerId = "6"
+        data.clientName = "parvesh"
+        data.clientAddress = "mumbai"
+        data.pinCode = "400706"
+        data.emailId = "parvesh@gmail.com"
+        data.mobile = "7162986"
+        data.birthDate = date
+        data.aadharNumber = "12345"
+        data.aadharURL = "vaibhav.pdf"
+        data.panCardNumber = "123abc456"
+        data.panCardURL ="0987654"
 
         Mockito.`when`(policyHolderRepository!!.findAll())
-            .thenReturn(listOf(d))
+            .thenReturn(listOf(data))
 
         Assertions.assertEquals(1,policyService!!.getAllDetails().size);
     }
 
     @Test
-    fun simpleGetTest() {
+    fun GetTest() {
         val testRestTemplate = TestRestTemplate()
         val result = testRestTemplate.exchange(
             URI( "http://localhost:8083/api/policy/policyholders"),
@@ -100,6 +66,26 @@ open class DocumentServiceApplicationTests() {
     }
 
 
+    //@Test
+    //fun getDetailsByIdTest(){
+       // val date = Date()
+//        var d2 = PolicyHolder()
+//        d2.partnerId = "6"
+//        d2.clientName = "vaibhav"
+//        d2.clientAddress = "mumbai"
+//        d2.pinCode = "400706"
+//        d2.emailId = "ani@gmail.com"
+//        d2.mobile = "7162986"
+//        d2.birthDate = date
+//        d2.aadharNumber = "12345"
+//        d2.aadharURL = "ani.pdf"
+//        d2.panCardNumber = "09876"
+//        d2.panCardURL ="0987654"
+
+//        Mockito.`when`(policyHolderRepository!!.findById())
+//            .thenReturn(listOf(d2))
+//        Assertions.assertEquals(1,policyService!!.getDerailsByPanCardNumber().size);
+//    }
 
 }
 
