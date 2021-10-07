@@ -31,28 +31,7 @@ open class DocumentServiceApplicationTests() {
 
 
 
-    @Test
-    fun getAllDetailsTest(){
-        val date = Date()
-        var data = PolicyHolder()
-        data.partnerId = "6"
-        data.clientName = "parvesh"
-        data.clientAddress = "mumbai"
-        data.pinCode = "400706"
-        data.emailId = "parvesh@gmail.com"
-        data.mobile = "7162986"
-        data.birthDate = date
-        data.aadharNumber = "12345"
-        data.aadharURL = "vaibhav.pdf"
-        data.panCardNumber = "123abc456"
-        data.panCardURL ="0987654"
-
-        Mockito.`when`(policyHolderRepository!!.findAll())
-            .thenReturn(listOf(data))
-
-        Assertions.assertEquals(1,policyService!!.getAllDetails().size);
-    }
-
+   
   
    
 
